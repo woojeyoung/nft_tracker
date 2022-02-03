@@ -92,6 +92,7 @@ class ProductPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id:"",
       customers: "",
       sellers: "",
       completed: 0,
@@ -127,7 +128,7 @@ class ProductPage extends Component {
   };
 
   getProducts = async () => {
-    const response = await fetch("/api/products");
+    const response = await fetch("/api/products");    
     const body = await response.json();
 
     console.log("getProducts: " + body);

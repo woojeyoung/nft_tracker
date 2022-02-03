@@ -17,9 +17,9 @@ const authorization = config.authorization;
 
 const caver = config.caver;
 
-// app.get('/api/hello', (req, res) => {
-//     res.send({message: 'Hello Express!'});
-// })
+app.get('/api/hello', (req, res) => {
+    res.send({message: 'Hello Express!'});
+})
 
 const data = fs.readFileSync("./database.json");
 const conf = JSON.parse(data);
