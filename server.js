@@ -61,6 +61,7 @@ app.get("/api/products/:id", (req, res) => {
 
 app.get("/api/receipts/:id", (req, res) => {
   console.log("get /api/receipts");
+  console.log("req.params.id", req.params.id);
   connection.query(
     "SELECT * FROM TEST.PRODUCT WHERE isDeleted = 0 AND id = ?",
     req.params.id,

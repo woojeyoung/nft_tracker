@@ -81,6 +81,11 @@ function Menu(props) {
     history.push("/product");
   };
 
+  const clickToken = () => {
+    // setState({ ...state, toCustomer: false, toSeller: true });
+    history.push("/token");
+  };
+
   const list = (anchor) => (
     <div
       className={clsx(classes.list, {
@@ -108,6 +113,16 @@ function Menu(props) {
             secondary="제품 및 영수증 관리"
           />
         </ListItem>
+
+        <ListItem button key="token" onClick={clickToken}>
+          <ListItemIcon>
+            <ReceiptIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary="토큰 발행 페이지"
+            secondary="클레이튼 기반 토큰 발행"
+          />
+        </ListItem>        
       </List>
     </div>
   );
