@@ -223,6 +223,9 @@ app.post("/api/receipts", async (req, res) => {
           tokenURI = JSON.stringify({
             sellerID: 0,
             productID: req.body.productID,
+            name: req.body.name,
+            description: req.body.description,
+            image_url: req.body.image_url,            
           });
           mintResult = await kip17.mintWithTokenURI(
             req.body.toAddr,
@@ -233,14 +236,17 @@ app.post("/api/receipts", async (req, res) => {
 
           let sql =
             "INSERT INTO TEST.RECEIPT " +
-            "(sellerID, productID, tokenID, tokenURI, contractAddr, fromAddr, toAddr, registeredDate, lastUpdatedDate, isDeleted)" +
-            " VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), NOW(), 0)";
+            "(sellerID, productID, tokenID, tokenURI, image_url, name, description, contractAddr, fromAddr, toAddr, registeredDate, lastUpdatedDate, isDeleted)" +
+            " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW(), 0)";
 
           let params = [
             0,
             req.body.productID,
             randomID,
             tokenURI,
+            req.body.image_url,
+            req.body.name,
+            req.body.description,
             contractAddr,
             "0x0000000000000000000000000000000000000000",
             req.body.toAddr,
